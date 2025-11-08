@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Drawing Canvas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Collaborative Drawing Canvas</h1>
+            <div class="user-info">
+                <div id="username-display">Guest</div>
+                <div id="users-online" class="users-count">0 users online</div>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="tool-section">
+                <label>Tool:</label>
+                <button id="tool-brush" class="tool-btn active">Brush</button>
+                <button id="tool-eraser" class="tool-btn">Eraser</button>
+            </div>
+
+            <div class="tool-section">
+                <label>Color:</label>
+                <input type="color" id="color-picker" value="#000000">
+                <div class="color-presets">
+                    <div class="color-preset" data-color="#000000" style="background-color: #000000;"></div>
+                    <div class="color-preset" data-color="#FF0000" style="background-color: #FF0000;"></div>
+                    <div class="color-preset" data-color="#00FF00" style="background-color: #00FF00;"></div>
+                    <div class="color-preset" data-color="#0000FF" style="background-color: #0000FF;"></div>
+                    <div class="color-preset" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
+                    <div class="color-preset" data-color="#FF00FF" style="background-color: #FF00FF;"></div>
+                    <div class="color-preset" data-color="#00FFFF" style="background-color: #00FFFF;"></div>
+                    <div class="color-preset" data-color="#FFFFFF" style="background-color: #FFFFFF;"></div>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <label>Brush Size:</label>
+                <input type="range" id="brush-size" min="1" max="50" value="5">
+                <span id="brush-size-display">5</span>
+            </div>
+
+            <div class="tool-section">
+                <button id="undo-btn" class="action-btn">↶ Undo</button>
+                <button id="redo-btn" class="action-btn">↷ Redo</button>
+                <button id="clear-btn" class="action-btn danger">Clear Canvas</button>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="drawing-canvas"></canvas>
+            <canvas id="cursor-layer"></canvas>
+        </div>
+
+        <div class="sidebar">
+            <h3>Online Users</h3>
+            <div id="users-list"></div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="canvas.js"></script>
+    <script src="websocket.js"></script>
+        <!-- Join modal: user must enter a name before connecting -->
+        <div id="join-modal" aria-hidden="false">
+            <div class="modal-content">
+                <h2>Enter your name</h2>
+                <input id="username-input" type="text" placeholder="Your name" autocomplete="off" />
+                <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+                    <button id="join-btn">Join</button>
+                </div>
+            </div>
+        </div>
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
