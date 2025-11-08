@@ -62,7 +62,12 @@
         </div>
     </div>
 
-    <script src="/socket.io/socket.io.js"></script>
+        <script>
+            // Set SOCKET_URL at runtime (can be injected at build time or set here)
+            // Example: window.SOCKET_URL = 'https://your-server.onrender.com';
+            window.SOCKET_URL = window.SOCKET_URL || '';
+        </script>
+        <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script src="canvas.js"></script>
     <script src="websocket.js"></script>
         <!-- Join modal: user must enter a name before connecting -->

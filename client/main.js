@@ -14,7 +14,7 @@
       document.getElementById('username-display').textContent = username;
 
       
-      socket = io();
+  socket = io(window.SOCKET_URL && window.SOCKET_URL.length ? window.SOCKET_URL : undefined);
       webSocketManager = new WebSocketManager(socket);
       window.webSocketManager = webSocketManager;
 
